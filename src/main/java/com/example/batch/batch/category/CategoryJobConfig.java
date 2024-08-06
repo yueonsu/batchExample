@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.support.DefaultBatchConfiguration;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
@@ -17,7 +18,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-public class CategoryJobConfig {
+public class CategoryJobConfig { // 원래 DefaultBatchConfiguration을 상속받았는데 다중 DB 설정 후 BatchDataSource 적용을 위해 제거
     private final CategoryItemReader categoryItemReader;
     private final CategoryItemWriter categoryItemWriter;
     private final CategoryItemProcessor categoryItemProcessor;

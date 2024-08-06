@@ -37,7 +37,7 @@ public class CustomDataSource {
         em.setPackagesToScan("com.example.batch.model.work");
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setShowSql(true);
+        vendorAdapter.setShowSql(false);
         vendorAdapter.setGenerateDdl(true);
         em.setJpaVendorAdapter(vendorAdapter);
 
@@ -45,6 +45,7 @@ public class CustomDataSource {
         prop.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         prop.put("hibernate.hbm2ddl.auto", "update");
         prop.put("hibernate.format_sql", true);
+        prop.put("hibernate.physical_naming_strategy", "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl");
         em.setJpaPropertyMap(prop);
 
         return em;

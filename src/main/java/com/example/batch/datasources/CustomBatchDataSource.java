@@ -37,14 +37,12 @@ public class CustomBatchDataSource {
         em.setPackagesToScan("com.example.batch.model.batch");
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setShowSql(true);
-        vendorAdapter.setGenerateDdl(true);
+        vendorAdapter.setShowSql(false);
+        vendorAdapter.setGenerateDdl(false); // ddl-auto 속성 사용 여부
         em.setJpaVendorAdapter(vendorAdapter);
 
         HashMap<String, Object> prop = new HashMap<>();
-        prop.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-        prop.put("hibernate.hbm2ddl.auto", "create");
-        prop.put("hibernate.format_sql", true);
+        prop.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         em.setJpaPropertyMap(prop);
 
         return em;
